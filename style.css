@@ -7,21 +7,35 @@
     height: 100px;
     background: transparent url(./image/super.png) center / cover no-repeat;
     position: absolute;
-    left: 125px;
-    bottom: 10px;
 }
 
 .start {
     position: absolute;
-    top: 10%;
-    left: 8%;
-    width: 250px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
     height: 25px;
-    background-color: orange;
+    background-color: rgb(18, 44, 75);
+    color: rgb(23, 129, 64);
     border: #222 1px solid;
-    border-radius: 9px;
-    padding: 1em;
+    padding: 2rem 0;
     text-align: center;
+    z-index: 200;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.promo {
+    /* height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0; */
+    background-image:('./image/star.jpg');
+    width: 100%;
+    height: 50%;
 }
 
 .game{
@@ -43,4 +57,19 @@
     height: 50px;
     background-color: #ffffff;
     left: 145px;
+}
+
+.score {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     background: rgb(18, 44, 75);
+     padding: 2rem 0;
+     z-index: 200;
+     font-size: 1.5rem;
+     color: skyblue;
+     text-align: center;
+     font-family: sans-serif;
+     font-weight: 500;
 }
