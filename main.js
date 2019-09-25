@@ -1,11 +1,20 @@
 const score = document.querySelector('.score'),
     start = document.querySelector('.start'),
+    hard = document.querySelector('.hard'),
+    vale = document.querySelector('.vale'),
+    medium = document.querySelector('.medium'),
+    ease = document.querySelector('.ease'),
     gameArea = document.querySelector('.gameArea'),
+    ost = document.querySelector('.ost'),
+    crash = document.querySelector('.break'),
     car = document.createElement('div')
     car.classList.add('car');
 
 
     start.addEventListener('click', startGame);
+    hard.addEventListener('click', hardGame),
+    medium.addEventListener('click', mediumGame),
+    ease.addEventListener('click', easeGame),
     document.addEventListener('keydown', startRun);
     document.addEventListener('keyup', stopRun);
 
@@ -28,6 +37,9 @@ const score = document.querySelector('.score'),
     }
         console.log(getQuantityElements(150))
     function startGame() {
+        crash.stop();
+        ost.play();
+        vale.style.display = 'none';
         start.classList.add('hide');
         gameArea.innerHTML = '';
         for (let i = 0; i < getQuantityElements(100); i++) {
@@ -50,6 +62,7 @@ const score = document.querySelector('.score'),
         }
         
         setting.score = 0;
+        ost.muted = false;
         setting.start = true;
         gameArea.appendChild(car);
         car.style.left = gameArea.offsetWidth/2 - car.offsetWidth/2;
@@ -85,15 +98,33 @@ const score = document.querySelector('.score'),
         }
     }
 
-     function startRun(event) {
+    function hardGame() {
+        setting.speed = 25;
+        setting.traffic = 2;
+    }
+
+    function mediumGame() {
+        setting.speed = 15;
+        setting.traffic = 3;
+    }
+
+    function easeGame() {
+        setting.speed = 8;
+        setting.traffic = 4;
+    }
+
+    function startRun(event) {
         event.preventDefault();
-        keys[event.key] = true;
-        console.log(event.key);
+        if (keys.hasOwnProperty(event.key)) {
+            keys[event.key] = true;
+        }
+        
     }
 
     function stopRun(event) {
-        keys[event.key] = false;
-        console.log(stopRun);
+        if (keys.hasOwnProperty(event.key)) {
+            keys[event.key] = false;
+        }
     }
 
     function  moveRoad() {
@@ -107,6 +138,12 @@ const score = document.querySelector('.score'),
             }
         });    
     }
+
+    HTMLAudioElement.prototype.stop = function(){
+        this.pause();
+        this.currentTime = 0.0;
+    };
+
     function moveEnemy() {
         let enemy = document.querySelectorAll('.enemy');
         
@@ -121,6 +158,11 @@ const score = document.querySelector('.score'),
                 setting.start = false;
                 start.classList.remove('hide');
                 start.style.top = score.offsetHeight;
+                vale.style.marginTop = hard.offsetHeight;
+                ost.stop();
+                crash.play();
+                vale.style.display = 'block';
+                                  
             }
             
            item.y += setting.speed / 2;
@@ -134,6 +176,8 @@ const score = document.querySelector('.score'),
         
     }
     
+    console.dir(ost);
+
     
     
     function ybo(width,length,height) {

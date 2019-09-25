@@ -27,6 +27,47 @@
     font-weight: 700;
 }
 
+.vale {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+}
+
+.ease, .hard, .medium {
+    width: 10em;
+    margin-bottom: 15px;
+    background-color: rgb(18, 44, 75);
+    color: rgb(23, 129, 64);
+    border: rgb(201, 70, 70) 1px solid;
+    padding: 2rem 0;
+    text-align: center;
+    z-index: 200;
+    cursor: pointer;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+/* .ease {
+    position: absolute;
+    top: 75%;
+    left: 4%;
+    margin-bottom: 4em;
+}
+
+.medium {
+    position: absolute;
+    top: 50%;
+    left: 4%;
+}
+
+.hard {
+    position: absolute;
+    top: 30%;
+    left: 4%;    
+} */
+
 .promo {
     /* height: 100vh;
     top: 0;
